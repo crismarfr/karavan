@@ -1,0 +1,25 @@
+apiVersion: camel.apache.org/v1
+kind: Integration
+metadata:
+  name: test.yaml
+spec:
+  flows:
+    - route:
+        from:
+          uri: kamelet:salesforce-source
+          steps:
+            - log:
+                message: 'Message body: ${body}'
+                loggingLevel: INFO
+                logName: test
+                id: test
+                description: test
+          parameters:
+            query: SELECT Id, Name, Email, Phone FROM Contact
+            topicName: ContactTopic
+            loginUrl: https://digitalsiconsulting-dev-ed.my.salesforce.com
+            clientId: >-
+              3MVG9t0sl2P.pByrDzrbITXrvehoM2wK0hpss5iv.t56GiTXOwGfZ5agycX5hMRJnj_XHr4AdIcysKxEm3OSx
+            clientSecret: 61DEC7141A679427B8A84DC0416EE01C8AAB052AC1D94C73D1336A8329171C3C
+            userName: crismarfr1973@gmail.com
+            password: Yancel1418
